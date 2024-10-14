@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from buttons import Button
 import darkdetect
 from settings import *
 try:
@@ -39,6 +40,76 @@ class Calculator(ctk.CTk):
         OutputLabel(self, 0, 'se', main_font, self.formula_string)
         OutputLabel(self, 1, 'e', result_font, self.result_string)
 
+        # AC Button
+        Button(
+            parent=self, 
+            func=self.clear,
+            text=OPERATORS['clear']['text'], 
+            col=OPERATORS['clear']['col'], 
+            row=OPERATORS['clear']['row'],
+            font=main_font
+        )
+
+        # Invert Button
+        Button(
+            parent=self, 
+            func=self.invert,
+            text=OPERATORS['invert']['text'], 
+            col=OPERATORS['invert']['col'], 
+            row=OPERATORS['invert']['row'],
+            font=main_font
+        )
+
+        # Percentage Button
+        Button(
+            parent=self, 
+            func=self.percent,
+            text=OPERATORS['percent']['text'], 
+            col=OPERATORS['percent']['col'], 
+            row=OPERATORS['percent']['row'],
+            font=main_font
+        )
+
+        # number butttons
+        for num, data in NUM_POSITIONS.items():
+            Button(
+                parent=self,
+                text=num,
+                func=self.number,
+                col=data['col'],
+                row=data['row'],
+                font=main_font,
+                color='light-gray',
+                colspan=data['span']
+            )
+
+        # math buttons
+        for math, data in MATH_POSITIONS.items():
+            Button(
+                parent=self,
+                text=data['character'],
+                func=self.math,
+                col=data['col'],
+                row=data['row'],
+                font=main_font,
+                color='orange',
+            )
+
+    def clear(self, text):
+        print('clear')
+
+    def invert(self, text):
+        print('invert')
+
+    def percent(self, text):
+        print('percent')
+
+    def number(self, number):
+        print(number)
+
+    def math(self, math_operator):
+        print(math_operator)
+
     def title_bar_color(self, is_dark):
         try:
             HWND = windll.user32.GetParent(self.winfo_id())
@@ -50,7 +121,7 @@ class Calculator(ctk.CTk):
 
 class OutputLabel(ctk.CTkLabel):
     def __init__(self, parent, row, anchor, font, string_var):
-        super().__init__(master=parent, text='123', font=font, textvariable=string_var)
+        super().__init__(master=parent, font=font, textvariable=string_var)
         self.grid(column=0, columnspan=4, row=row, sticky=anchor, padx=10)
 
 if __name__ == '__main__':

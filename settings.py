@@ -28,17 +28,17 @@ NUM_POSITIONS = {
 }
 
 MATH_POSITIONS = {
-    '/': {'col': 3, 'row': 2, 'character': '', 'operator': '/', 'image path': None},
-    '*': {'col': 3, 'row': 3, 'character': 'x', 'operator': '*', 'image path': None},
-    '-': {'col': 3, 'row': 4, 'character': '-', 'operator': '-', 'image path': None},
-    '=': {'col': 3, 'row': 6, 'character': '=', 'operator': '=', 'image path': None},
-    '+': {'col': 3, 'row': 5, 'character': '+', 'operator': '+', 'image path': None},
+    '/': {'col': 3, 'row': 2, 'character': '÷', 'operator': '/'},
+    '*': {'col': 3, 'row': 3, 'character': 'x', 'operator': '*'},
+    '-': {'col': 3, 'row': 4, 'character': '-', 'operator': '-'},
+    '=': {'col': 3, 'row': 6, 'character': '=', 'operator': '='},
+    '+': {'col': 3, 'row': 5, 'character': '+', 'operator': '+'},
 }
 
 OPERATORS = {
-    'clear': {'col': 0, 'row': 2, 'text': 'AC', 'image path': None},
-    'invert': {'col': 1, 'row': 2, 'text': '', 'image path': None},
-    'percent': {'col': 2, 'row': 2, 'text': '%', 'image path': None},
+    'clear': {'col': 0, 'row': 2, 'text': 'AC'},
+    'invert': {'col': 1, 'row': 2, 'text': '+/-'},
+    'percent': {'col': 2, 'row': 2, 'text': '%'},
 }
 
 COLORS = {
