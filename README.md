@@ -48,11 +48,4 @@ python calculator.py
 ## Example Screenshot
 
 ![Calculator Screenshot](calculator.png)
-
-## Future Improvements
-
-- **Additional Features**: Implement scientific functions like square root, exponentiation, and memory functions.
-- **Cross-platform Title Bar Customization**: Improve title bar customization for macOS and Linux.
 ```
-
-This content is ready to be saved as `README.md`. It gives a complete overview of the project, including its features, how to set it up, and how to use it. You can add a screenshot where indicated if you want a visual example in the README.
