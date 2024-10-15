@@ -25,6 +25,8 @@ class Calculator(ctk.CTk):
         # data
         self.result_string = ctk.StringVar(value = '0')
         self.formula_string = ctk.StringVar(value = '')
+        self.display_nums = []
+        self.full_operation = []
 
         # widgets
         self.create_widgets()
@@ -105,10 +107,44 @@ class Calculator(ctk.CTk):
         print('percent')
 
     def number(self, number):
-        print(number)
+        self.display_nums.append(str(number))
+        full_number = ''.join(self.display_nums)
+        self.result_string.set(full_number )
 
     def math(self, math_operator):
-        print(math_operator)
+        if math_operator == '÷':
+            math_operator = '/'
+        elif math_operator == 'x':
+            math_operator = '*'
+
+        current_number = ''.join(self.display_nums)
+        if current_number:
+            self.full_operation.append(current_number)
+            if math_operator != '=':
+                # update data
+                self.full_operation.append(math_operator)
+                self.display_nums.clear()
+
+                # update output
+                self.result_string.set('')
+                self.formula_string.set(' '.join(self.full_operation))
+            else:
+                formula = ' '.join(self.full_operation)
+                result = eval(formula)
+
+                if isinstance(result, float):
+                    if result.is_integer():
+                        result = int(result)
+                    else:
+                        result = round(result, 3)
+
+                # update data
+                self.full_operation.clear()
+                self.display_nums = [str(result)]
+
+                # update output
+                self.result_string.set(result)
+                self.formula_string.set(formula)
 
     def title_bar_color(self, is_dark):
         try:
