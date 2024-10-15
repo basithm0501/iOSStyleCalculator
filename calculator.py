@@ -98,13 +98,32 @@ class Calculator(ctk.CTk):
             )
 
     def clear(self, text):
-        print('clear')
+        # clear output
+        self.result_string.set(0)
+        self.formula_string.set('')
+
+        # clear data
+        self.display_nums.clear()
+        self.full_operation.clear()
 
     def invert(self, text):
-        print('invert')
+        current_number = ''.join(self.display_nums)
+        if current_number:
+            if float(current_number) > 0:
+                self.display_nums.insert(0, '-')
+            else:
+                del self.display_nums[0]
+
+            self.result_string.set(''.join(self.display_nums))
 
     def percent(self, text):
-        print('percent')
+        if self.display_nums:
+            current_number = float(''.join(self.display_nums))
+            percent_number = current_number / 100
+
+            # update data
+            self.display_nums = list(str(percent_number))
+            self.result_string.set(''.join(self.display_nums))
 
     def number(self, number):
         self.display_nums.append(str(number))
